@@ -27,7 +27,7 @@ from resource_services.Procedure_resource import format_procedure_response
 from resource_services.Provenance_resource import format_provenance_response
 from resource_services.SupplyDelivery_resource import format_supply_delivery_response
 
-
+# Initialize the objects for each table class
 patient = Patient()
 encounter = Encounter()
 condition = Condition()
@@ -49,9 +49,11 @@ allergyIntolerance = AllergyIntolerance()
 device = Device()
 supplyDelivery = SupplyDelivery()
 
+# Set the path for data set
 cur_path = os.path.dirname(__file__)
 json_dir = os.path.relpath('..\\emis_assessment\\data', cur_path)
 
+# Initialize the formatted bulk data set
 patient_resource_list = []
 encounter_resource_list = []
 condition_resource_list = []
@@ -72,7 +74,6 @@ Provenance_resource_list = []
 AllergyIntolerance_resource_list = []
 Device_resource_list = []
 SupplyDelivery_resource_list = []
-
 
 '''
 # -------- Get distinct resource types ---------
@@ -150,7 +151,6 @@ for filename in os.listdir(json_dir):
             Device_resource_list.append(format_device_response(item['resource']))
         if item['resource']['resourceType'] == 'SupplyDelivery':
             SupplyDelivery_resource_list.append(format_supply_delivery_response(item['resource']))
-
 
 if patient_resource_list:
     patient.insertPatientRecord(patient_resource_list)
