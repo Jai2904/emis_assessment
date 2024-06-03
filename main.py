@@ -50,9 +50,7 @@ device = Device()
 supplyDelivery = SupplyDelivery()
 
 cur_path = os.path.dirname(__file__)
-json_dir = os.path.relpath('..\\exa-data-eng-assessment\\data', cur_path)
-
-
+json_dir = os.path.relpath('..\\emis_assessment\\data', cur_path)
 
 patient_resource_list = []
 encounter_resource_list = []
@@ -156,6 +154,7 @@ for filename in os.listdir(json_dir):
 
 if patient_resource_list:
     patient.insertPatientRecord(patient_resource_list)
+
 if encounter_resource_list:
     encounter.insertEncounterRecord(encounter_resource_list)
 
@@ -167,31 +166,43 @@ if DocumentReference_resource_list:
 
 if Claim_resource_list:
     claim.insertClaimRecord(Claim_resource_list)
+
 if ExplanationOfBenefit_resource_list:
     explanationOfBenefit.insertExplanationOfBenefitRecord(ExplanationOfBenefit_resource_list)
+
 if Observation_resource_list:
     observation.insertObservationRecord(Observation_resource_list)
 
 if Immunization_resource_list:
     immunization.insertImmunizationRecord(Immunization_resource_list)
+
 if MedicationRequest_resource_list:
     medicationRequest.insertMedicationRequestRecord(MedicationRequest_resource_list)
+
 if CareTeam_resource_list:
     careTeam.insertCareTeamRecord(CareTeam_resource_list)
+
 if CarePlan_resource_list:
     carePlan.insertCarePlanRecord(CarePlan_resource_list)
+
 if ImagingStudy_resource_list:
     imagingStudy.insertImagingStudyRecord(ImagingStudy_resource_list)
+
 if Medication_resource_list:
     medication.insertMedicationRecord(Medication_resource_list)
+
 if MedicationAdministration_resource_list:
     medicationAdministration.insertMedicationAdministrationRecord(MedicationAdministration_resource_list)
-# if Provenance_resource_list:
-#     provenance.insertProvenanceRecord(Provenance_resource_list)
-# if AllergyIntolerance_resource_list:
-#     allergyIntolerance.insertAllergyIntoleranceRecord(AllergyIntolerance_resource_list)
+
+if Provenance_resource_list:
+    provenance.insertProvenanceRecord(Provenance_resource_list)
+
+if AllergyIntolerance_resource_list:
+    allergyIntolerance.insertAllergyIntoleranceRecord(AllergyIntolerance_resource_list)
+
 if Device_resource_list:
     device.insertDeviceRecord(Device_resource_list)
+
 if SupplyDelivery_resource_list:
     supplyDelivery.insertSupplyDeliveryRecord(SupplyDelivery_resource_list)
 

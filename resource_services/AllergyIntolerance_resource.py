@@ -1,3 +1,6 @@
+import json
+
+
 def format_allergy_intolerance_response(data):
     try:
         def get_nested_value(d, keys, default=None):
@@ -20,15 +23,14 @@ def format_allergy_intolerance_response(data):
         recorded_date = data.get("recordedDate")
         reactions_list = data.get("reaction", [])
 
-        reactions = []
+        reactions = {}
         for reaction in reactions_list:
-            manifestation = get_nested_value(reaction, ["manifestation", 0, "text"])
-            if manifestation:
-                reactions.append(manifestation)
-
+            manifestation_display = reaction.get('manifestation', [{}])[0].get('text')
+            severity = reaction.get("severity")
+            if manifestation_display and severity:
+                reactions[manifestation_display] = severity
         fields = (id, clinical_status, verification_status, type, category, criticality,
-                  code, recorded_date, reactions)
-
+                  code, recorded_date, json.dumps(reactions))
         return fields
 
     except Exception as e:

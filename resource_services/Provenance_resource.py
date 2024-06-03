@@ -1,3 +1,5 @@
+import json
+
 
 def format_provenance_response(data):
     try:
@@ -15,14 +17,15 @@ def format_provenance_response(data):
         recorded = data.get("recorded")
         agents = data.get("agent", [])
 
-        agent_details = []
+        agent_details = {}
+
         for agent in agents:
-            agent_type = get_nested_value(agent, ["type", "coding", 0, "display"])
+            agent_type = get_nested_value(agent, ["type", "text"])
             who_display = get_nested_value(agent, ["who", "display"])
             on_behalf_of_display = get_nested_value(agent, ["onBehalfOf", "display"])
-            agent_details.append((agent_type, who_display, on_behalf_of_display))
+            agent_details[agent_type] = {"Name": who_display, "BehalfOf": on_behalf_of_display}
 
-        fields = (id, recorded, str(agents))
+        fields = (id, recorded, json.dumps(agent_details))
 
         return fields
 
