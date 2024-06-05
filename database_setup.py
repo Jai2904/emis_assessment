@@ -11,4 +11,5 @@ for command in commands:
     if command:
         cursor.execute(command)
 
+connection.commit()
 connection.close()
