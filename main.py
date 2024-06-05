@@ -51,7 +51,7 @@ supplyDelivery = SupplyDelivery()
 
 # Set the path for data set
 cur_path = os.path.dirname(__file__)
-json_dir = os.path.relpath('..\\emis_assessment\\data', cur_path)
+json_dir = os.path.relpath('data', cur_path)
 
 # Initialize the formatted bulk data set
 patient_resource_list = []

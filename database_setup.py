@@ -1,6 +1,6 @@
 import pymysql
 
-connection = pymysql.connect(host="localhost", user="root", password="password", database="patient_db")
+connection = pymysql.connect(host="host.docker.internal", user="root", password="password", database="patient_db")
 
 cursor = connection.cursor()
 
