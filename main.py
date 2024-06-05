@@ -27,6 +27,11 @@ from resource_services.Procedure_resource import format_procedure_response
 from resource_services.Provenance_resource import format_provenance_response
 from resource_services.SupplyDelivery_resource import format_supply_delivery_response
 
+from database_setup import initialise_database
+
+# Set up the tables
+initialise_database()
+
 # Initialize the objects for each table class
 patient = Patient()
 encounter = Encounter()

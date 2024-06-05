@@ -11,7 +11,7 @@ class Database:
         in DB
         """
         try :
-            conn = pymysql.connect(host="host.docker.internal", user="root", password="password", database="patient_db")
+            conn = pymysql.connect(host="localhost", user="root", password="password", database="patient_db")
             cursor = conn.cursor()
             cursor.executemany(sql, args)
             conn.commit()
