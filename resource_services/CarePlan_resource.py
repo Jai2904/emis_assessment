@@ -14,11 +14,13 @@ def format_care_plan_response(data):
         id = data.get("id")
         status = data.get("status")
         intent = data.get("intent")
-        category = get_nested_value(data, ["category", 1, "text"])
         subject = get_nested_value(data, ["subject", "reference"])
         encounter = get_nested_value(data, ["encounter", "reference"])
         period_start = get_nested_value(data, ["period", "start"])
         period_end = get_nested_value(data, ["period", "end"])
+
+        for each in data.get("category"):
+            category = each.get("text")
 
         fields = (id, status, intent, category, subject, encounter, period_start, period_end)
 

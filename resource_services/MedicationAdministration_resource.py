@@ -17,7 +17,7 @@ def format_medication_administration_response(data):
         subject_reference = data.get("subject", {}).get("reference")
         context_reference = data.get("context", {}).get("reference")
         effective_date_time = data.get("effectiveDateTime")
-        reason_reference = get_nested_value(data, ["reasonReference", 0, "reference"])
+        reason_reference = get_nested_value(data, ["reasonReference", "reference"])
 
         fields = (id, status, medication_display, subject_reference, context_reference,
                   effective_date_time, reason_reference)

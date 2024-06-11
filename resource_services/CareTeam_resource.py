@@ -16,8 +16,8 @@ def format_care_team_response(data):
         encounter = get_nested_value(data, ["encounter", "reference"])
         period_start = get_nested_value(data, ["period", "start"])
         period_end = get_nested_value(data, ["period", "end"])
-        reason_code = get_nested_value(data, ["reasonCode", 0, "text"])
-        managing_organization = get_nested_value(data, ["managingOrganization", 0, "display"])
+        reason_code = data.get("reasonCode", [{}])[0].get("text", "")
+        managing_organization = data.get("managingOrganization", [{}])[0].get("display", "")
 
         fields = (id, status, subject, encounter, period_start, period_end, reason_code, managing_organization)
 
